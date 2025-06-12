@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JWcashnest BANK - Loans & Credit Cards</title>
+  <title>JWcashnest BANK - Loans</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <div class="dashboard-container" style="display: flex; min-height: 100vh;">
+  <div class="dashboard-container">
+    
     <!-- Sidebar -->
-    <div class="sidebar" style="width: 250px; background: #0D47A1; color: white; padding: 20px;">
-      <h2 style="color:white;">JWcashnest</h2>
+    <div class="sidebar">
+      <img src="assets/logo.png" alt="JWcashnest Logo" style="width: 140px; margin-bottom: 20px;" />
       <ul style="list-style: none; padding-left: 0;">
         <li><a href="home.html" style="color: white;"><i class="fa fa-home"></i> Dashboard</a></li>
         <li><a href="account.html" style="color: white;"><i class="fa fa-university"></i> Account</a></li>
@@ -27,32 +28,29 @@
     </div>
 
     <!-- Main Content -->
-    <div class="main-content" style="flex: 1; padding: 30px;">
-      <h2>Loan & Credit Card Offers</h2>
+    <div class="main-content">
+      <h2>Credit Card & Loan Offers</h2>
 
-      <div class="card" style="margin-bottom: 20px;">
-        <h3><i class="fa fa-credit-card"></i> Platinum Credit Card</h3>
-        <p>Limit: ₹10,00,00,000.00</p>
-        <p>No annual fees | Lounge access | 2% cashback on all transactions</p>
-        <button onclick="alert('Applied for Platinum Credit Card')">Apply Now</button>
+      <div class="card">
+        <h3><i class="fa fa-credit-card"></i> ₹10 Cr Platinum Credit Card</h3>
+        <p>Lifetime free | Lounge access | 2% cashback on all spends</p>
+        <button onclick="alert('Applied for Credit Card!')">Apply Now</button>
       </div>
 
-      <div class="card" style="margin-bottom: 20px;">
+      <div class="card">
         <h3><i class="fa fa-home"></i> Home Loan</h3>
-        <p>Interest rate starting at 8.25% p.a.</p>
-        <p>Flexible tenure up to 30 years | Up to ₹5 Cr</p>
-        <button onclick="alert('Applied for Home Loan')">Apply Now</button>
+        <p>Up to ₹5 Cr | Low interest rate starting at 8.25%</p>
+        <button onclick="alert('Applied for Home Loan!')">Apply Now</button>
       </div>
 
-      <div class="card" style="margin-bottom: 20px;">
+      <div class="card">
         <h3><i class="fa fa-hand-holding-usd"></i> Personal Loan</h3>
-        <p>Loan amount up to ₹50 lakh | Instant disbursal</p>
-        <p>Low documentation | No collateral required</p>
-        <button onclick="alert('Applied for Personal Loan')">Apply Now</button>
+        <p>Instant disbursal | Up to ₹50 lakh | No collateral</p>
+        <button onclick="alert('Applied for Personal Loan!')">Apply Now</button>
       </div>
 
       <div class="card" style="background: #e3f2fd;">
-        <strong>💼 Financial Advice:</strong> Maintain good credit score for faster approvals.
+        <strong>💡 Tip:</strong> Keep your credit score above 750 for faster approval.
       </div>
     </div>
   </div>
@@ -60,3 +58,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
