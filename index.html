@@ -8,69 +8,91 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     body {
-      background: url("assets/bank-bg.jpg") no-repeat center center fixed;
+      background: url("bank.jpg") no-repeat center center fixed;
       background-size: cover;
       margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .login-logo {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .login-logo img {
-      width: 150px;
-      height: auto;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     .login-box {
-      max-width: 400px;
-      margin: 20px auto;
-      background: #fff;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      width: 350px;
+      margin: 100px auto;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
 
-    .eye-toggle {
+    .login-box img {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 140px;
+    }
+
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #002147;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #0071ce;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #004080;
+    }
+
+    .eye-icon {
       position: absolute;
       right: 15px;
-      top: 38px;
+      top: 41px;
       cursor: pointer;
-      color: #999;
+      color: #0071ce;
+    }
+
+    .input-group {
+      position: relative;
     }
   </style>
 </head>
 <body>
-  <!-- Bank Logo -->
-  <div class="login-logo">
-    <img src="assets/logo.png" alt="JWcashnest BANK Logo" />
-  </div>
 
-  <!-- Login Card -->
-  <div class="card login-box">
-    <h2 style="text-align: center;">Login to JWcashnest</h2>
-    <input type="text" id="userId" placeholder="User ID" required />
-    <div style="position: relative;">
-      <input type="password" id="password" placeholder="Password" required />
-      <i id="toggleEye" class="fa fa-eye-slash eye-toggle" onclick="togglePassword()"></i>
-    </div>
-    <button onclick="loginUser()">Login</button>
-    <p style="text-align:center;">Don't have an account? <a href="register.html">Register</a></p>
-  </div>
-
-  <!-- Offer Banner -->
-  <div class="card" style="max-width: 400px; margin: 20px auto; background: #e3f2fd;">
-    <strong>📢 Offer:</strong> Get ₹10 Cr credit card limit – <a href="loans.html">Explore Now</a>
+  <div class="login-box">
+    <img src="logo.png" alt="JWcashnest BANK Logo" />
+    <h2>Login</h2>
+    <form onsubmit="validateLogin(event)">
+      <input type="text" id="user-id" placeholder="User ID" required />
+      
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Password" required />
+        <i class="fa fa-eye eye-icon" id="toggle-password" onclick="togglePasswordVisibility('password', 'toggle-password')"></i>
+      </div>
+      
+      <button type="submit">Login</button>
+    </form>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
