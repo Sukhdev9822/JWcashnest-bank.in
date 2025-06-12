@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JWcashnest BANK - Register</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="card" style="max-width: 500px; margin: 60px auto;">
+    <h2>Create Your JWcashnest Account</h2>
+    <input type="text" placeholder="Full Name" required />
+    <input type="email" placeholder="Email Address" required />
+    <input type="tel" placeholder="Phone Number" required />
+    <input type="text" placeholder="Aadhaar Number" required />
+    <input type="text" placeholder="PAN Number" required />
+    <input type="text" placeholder="Create User ID" required />
+    <input type="password" placeholder="Create Password" required />
+    <button onclick="alert('Account created successfully! Redirecting to login...'); window.location.href='index.html';">
+      Register
+    </button>
+    <p style="text-align:center;">Already have an account? <a href="index.html">Login</a></p>
+  </div>
+
+  <div class="card" style="max-width: 500px; margin: 20px auto; background: #fff3cd;">
+    <strong>🛡️ Note:</strong> Your Aadhaar and PAN are required for KYC verification. JWcashnest is RBI registered.
+  </div>
+</body>
+</html>

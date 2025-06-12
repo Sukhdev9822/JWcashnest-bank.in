@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JWcashnest BANK - Statements</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="dashboard-container" style="display: flex; min-height: 100vh;">
+    <!-- Sidebar -->
+    <div class="sidebar" style="width: 250px; background: #0D47A1; color: white; padding: 20px;">
+      <h2 style="color:white;">JWcashnest</h2>
+      <ul style="list-style: none; padding-left: 0;">
+        <li><a href="home.html" style="color: white;"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li><a href="account.html" style="color: white;"><i class="fa fa-university"></i> Account</a></li>
+        <li><a href="statements.html" style="color: white;"><i class="fa fa-file-invoice"></i> Statements</a></li>
+        <li><a href="transfer.html" style="color: white;"><i class="fa fa-exchange-alt"></i> Transfer</a></li>
+        <li><a href="beneficiaries.html" style="color: white;"><i class="fa fa-users"></i> Beneficiaries</a></li>
+        <li><a href="bills.html" style="color: white;"><i class="fa fa-receipt"></i> Bills</a></li>
+        <li><a href="loans.html" style="color: white;"><i class="fa fa-credit-card"></i> Loans</a></li>
+        <li><a href="support.html" style="color: white;"><i class="fa fa-headset"></i> Support</a></li>
+        <li><a href="profile.html" style="color: white;"><i class="fa fa-user-circle"></i> Profile</a></li>
+        <li><a href="logout.html" style="color: white;"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" style="flex: 1; padding: 30px;">
+      <h2>Transaction Statements</h2>
+
+      <div class="card">
+        <label for="year">Year:</label>
+        <select id="year" onchange="filterStatements()">
+          <option value="2025" selected>2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+        </select>
+        <label for="month">Month:</label>
+        <select id="month" onchange="filterStatements()">
+          <option value="06" selected>June</option>
+          <option value="05">May</option>
+          <option value="04">April</option>
+          <option value="03">March</option>
+          <option value="02">February</option>
+          <option value="01">January</option>
+        </select>
+      </div>
+
+      <div class="card" style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="background: #e3f2fd;">
+              <th>Txn ID</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody id="txnTable">
+            <!-- JS will insert rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function filterStatements() {
+      const year = document.getElementById('year').value;
+      const month = document.getElementById('month').value;
+      const tbody = document.getElementById('txnTable');
+      tbody.innerHTML = ''; // Clear previous
+
+      for (let day = 1; day <= 10; day++) {
+        const txnId = 'TXN' + year + month + (day < 10 ? '0' + day : day);
+        const type = day % 2 === 0 ? 'Credit' : 'Debit';
+        const desc = type === 'Credit' ? 'Salary Credit' : 'Online Purchase';
+        const amount = type === 'Credit' ? '₹95,000.00' : '₹4,000.00';
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${txnId}</td>
+          <td>${day}-${month}-${year}</td>
+          <td>${desc}</td>
+          <td>${type}</td>
+          <td>${amount}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    window.onload = filterStatements;
+  </script>
+</body>
+</html>
