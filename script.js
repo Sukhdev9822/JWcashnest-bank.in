@@ -12,6 +12,7 @@ function validateLogin(event) {
   }
 }
 
+
 // ===== PASSWORD TOGGLE =====
 function togglePasswordVisibility(inputId, iconId) {
   const input = document.getElementById(inputId);
