@@ -8,10 +8,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <div class="dashboard-container" style="display: flex; min-height: 100vh;">
+  <div class="dashboard-container">
+
     <!-- Sidebar -->
-    <div class="sidebar" style="width: 250px; background: #0D47A1; color: white; padding: 20px;">
-      <h2 style="color:white;">JWcashnest</h2>
+    <div class="sidebar">
+      <img src="assets/logo.png" alt="JWcashnest Logo" style="width: 140px; margin-bottom: 20px;" />
       <ul style="list-style: none; padding-left: 0;">
         <li><a href="home.html" style="color: white;"><i class="fa fa-home"></i> Dashboard</a></li>
         <li><a href="account.html" style="color: white;"><i class="fa fa-university"></i> Account</a></li>
@@ -27,32 +28,32 @@
     </div>
 
     <!-- Main Content -->
-    <div class="main-content" style="flex: 1; padding: 30px;">
+    <div class="main-content">
       <h2>My Profile</h2>
 
       <div class="card">
-        <form onsubmit="event.preventDefault(); alert('Profile updated successfully.');">
+        <form onsubmit="event.preventDefault(); alert('Profile updated successfully!');">
           <label>Full Name:</label>
-          <input type="text" value="Sukhdev Mondal" />
+          <input type="text" value="Sukhdev Mondal" required />
 
           <label>Aadhaar Number:</label>
-          <input type="text" value="671622353722" />
+          <input type="text" value="******3722" required />
 
           <label>PAN Number:</label>
-          <input type="text" value="EUKPM1620L" />
+          <input type="text" value="****M1620L" required />
 
-          <label>Email:</label>
-          <input type="email" value="sukhdevmondal@example.com" />
+          <label>Email Address:</label>
+          <input type="email" value="sukhdevmondal@example.com" required />
 
-          <label>Phone:</label>
-          <input type="text" value="8420149381" />
+          <label>Phone Number:</label>
+          <input type="tel" value="8420149381" required />
 
           <button type="submit">Update Profile</button>
         </form>
       </div>
 
-      <div class="card" style="margin-top: 20px; background: #fff3cd;">
-        <strong>🔒 Privacy Note:</strong> We never share your Aadhaar or PAN with third parties.
+      <div class="card" style="background: #fff3cd;">
+        <strong>🔐 Privacy Note:</strong> Your Aadhaar and PAN are stored securely.
       </div>
     </div>
   </div>
@@ -60,3 +61,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
