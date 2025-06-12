@@ -2,7 +2,8 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #f4f8fb;
+  background: url("bank.jpg") no-repeat center center fixed;
+  background-size: cover;
   color: #333;
 }
 
@@ -70,6 +71,7 @@ a {
 input[type="text"],
 input[type="password"],
 input[type="email"],
+input[type="number"],
 select,
 textarea {
   width: 100%;
@@ -78,6 +80,7 @@ textarea {
   border-radius: 6px;
   margin-top: 6px;
   margin-bottom: 15px;
+  font-size: 15px;
 }
 
 button {
@@ -88,6 +91,7 @@ button {
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s;
+  font-size: 15px;
 }
 
 button:hover {
@@ -99,8 +103,29 @@ h2 {
   color: #002147;
 }
 
+h3 {
+  margin-top: 0;
+}
+
 .eye-icon {
   cursor: pointer;
   margin-left: 10px;
   color: #0071ce;
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
 }
