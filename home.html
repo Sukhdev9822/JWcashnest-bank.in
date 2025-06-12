@@ -6,19 +6,12 @@
   <title>JWcashnest BANK - Dashboard</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    body {
-      background: url("assets/bank-bg.jpg") no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-    }
-  </style>
 </head>
 <body>
   <div class="dashboard-container">
     <!-- Sidebar -->
     <div class="sidebar">
-      <img src="assets/logo.png" alt="JWcashnest Logo" style="width: 140px; margin-bottom: 20px;" />
+      <h2 style="text-align:center; color:white; margin-bottom: 20px;">JWcashnest BANK</h2>
       <ul>
         <li><a href="home.html"><i class="fa fa-home"></i> Dashboard</a></li>
         <li><a href="account.html"><i class="fa fa-university"></i> Account</a></li>
@@ -40,29 +33,31 @@
       <div class="card">
         <h3>Account Overview</h3>
         <p><strong>Account No:</strong> 1000054871245007</p>
-        <p><strong>Balance:</strong> ₹
-  <span id="balance">••••••••••</span>
-  <i class="fa fa-eye" id="balance-icon" onclick="toggleBalance('balance', 'balance-icon', '8,95,74,000.52')"></i>
-</p>
-
+        <p>
+          <strong>Balance:</strong> ₹
+          <span id="balance">••••••••••</span>
+          <i class="fa fa-eye" id="balance-icon" onclick="toggleBalance('balance', 'balance-icon', '8,95,74,000.52')"></i>
+        </p>
       </div>
 
       <div class="card">
         <h3>Recent Login</h3>
-        <p><strong>Time:</strong> <span id="recentLogin">Loading...</span></p>
+        <p><strong>Time:</strong> <span id="login-time">Loading...</span></p>
       </div>
 
-      <div class="card" style="background: #e3f2fd;">
-        <strong>🎉 New Feature:</strong> Use your ₹10 Cr credit card today. <a href="loans.html">View Offers</a>
+      <div class="card" style="background:#e6f3ff;">
+        <p><strong>🎉 New Feature:</strong> Use your ₹10 Cr credit card today. <a href="#">View Offers</a></p>
       </div>
     </div>
   </div>
 
   <script src="script.js"></script>
-<script>showLoginTime();</script>
-
+  <script>
+    showLoginTime(); // Call this when the dashboard loads
+  </script>
 </body>
 </html>
+
 
 
 
