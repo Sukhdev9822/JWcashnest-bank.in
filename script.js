@@ -12,7 +12,7 @@ function validateLogin(event) {
   }
 }
 
-// ===== TOGGLE PASSWORD VISIBILITY =====
+// ===== PASSWORD TOGGLE =====
 function togglePasswordVisibility(inputId, iconId) {
   const input = document.getElementById(inputId);
   const icon = document.getElementById(iconId);
@@ -28,28 +28,29 @@ function togglePasswordVisibility(inputId, iconId) {
   }
 }
 
-// ===== TOGGLE BALANCE VISIBILITY =====
-function toggleBalance(id, iconId, realValue) {
-  const field = document.getElementById(id);
+// ===== BALANCE TOGGLE =====
+function toggleBalance(id, iconId, actualBalance) {
+  const balanceField = document.getElementById(id);
   const icon = document.getElementById(iconId);
 
-  if (field.textContent.includes("•")) {
-    field.textContent = realValue;
+  if (balanceField.textContent.includes("•")) {
+    balanceField.textContent = actualBalance;
     icon.classList.remove("fa-eye");
     icon.classList.add("fa-eye-slash");
   } else {
-    field.textContent = "•".repeat(realValue.length);
+    balanceField.textContent = "•".repeat(actualBalance.length);
     icon.classList.remove("fa-eye-slash");
     icon.classList.add("fa-eye");
   }
 }
 
-// ===== SHOW RECENT LOGIN TIME ON DASHBOARD =====
+// ===== SHOW LOGIN TIME ON HOME =====
 function showLoginTime() {
   const time = localStorage.getItem("loginTime");
   if (time && document.getElementById("login-time")) {
     document.getElementById("login-time").textContent = time;
   }
 }
+
 
 
