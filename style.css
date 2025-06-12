@@ -1,164 +1,106 @@
-/* ===== JWcashnest BANK — Global Styles ===== */
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* ===== RESET & BASE STYLES ===== */
+* {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-  color: #212121;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-a {
-  color: #0D47A1;
-  text-decoration: none;
+body {
+  font-size: 16px;
+  background-color: #f5f7fa;
+  color: #333;
 }
 
-h1, h2, h3 {
-  font-weight: 600;
-  margin-top: 0;
+/* ===== CARD STYLE ===== */
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  margin: 15px 0;
 }
 
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-input, select, button {
+/* ===== BUTTON ===== */
+button {
   width: 100%;
   padding: 10px;
-  margin: 8px 0;
-  font-size: 14px;
-  border-radius: 5px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-}
-
-button {
-  background-color: #0D47A1;
-  color: #fff;
-  font-weight: 600;
   border: none;
+  background-color: #0071ce;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #08306b;
+  background-color: #005da1;
 }
 
-/* ===== Layout Containers ===== */
-
+/* ===== DASHBOARD LAYOUT ===== */
 .dashboard-container {
   display: flex;
   min-height: 100vh;
-  flex-direction: row;
 }
 
 .sidebar {
   width: 250px;
-  background-color: #0D47A1;
-  color: white;
+  background-color: #002147;
   padding: 20px;
+  color: white;
+  min-height: 100vh;
 }
 
 .sidebar img {
+  max-width: 100%;
   margin-bottom: 20px;
 }
 
-.sidebar ul li {
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
   margin: 12px 0;
 }
 
-.sidebar ul li i {
-  margin-right: 8px;
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.sidebar a:hover {
+  background-color: #004080;
 }
 
 .main-content {
   flex: 1;
   padding: 30px;
-  background-color: #f9f9f9;
+  background-color: #f5f7fa;
 }
 
-/* ===== Cards ===== */
-
-.card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-/* ===== Login Page Specific ===== */
-
-.login-logo {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.login-box {
-  max-width: 400px;
-  margin: 20px auto;
-  padding: 25px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.eye-toggle {
-  position: absolute;
-  right: 15px;
-  top: 38px;
-  cursor: pointer;
-  color: #999;
-}
-
-/* ===== Table Styles ===== */
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
-  background-color: #e3f2fd;
-}
-
-/* ===== Pagination ===== */
-
-.pagination button {
-  margin: 2px;
-  padding: 5px 10px;
-  border: none;
-  background: #0D47A1;
-  color: white;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.pagination button.active {
-  background: #08306b;
-}
-
-/* ===== Responsive ===== */
-
-@media screen and (max-width: 768px) {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
   .dashboard-container {
     flex-direction: column;
   }
 
   .sidebar {
     width: 100%;
+    min-height: auto;
   }
 
   .main-content {
-    padding: 20px;
+    padding: 15px;
   }
 }
+
 
