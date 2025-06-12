@@ -6,12 +6,27 @@
   <title>JWcashnest BANK - Statements</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .pagination button {
+      margin: 2px;
+      padding: 5px 10px;
+      border: none;
+      background: #0D47A1;
+      color: white;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .pagination button.active {
+      background: #08306b;
+    }
+  </style>
 </head>
 <body>
-  <div class="dashboard-container" style="display: flex; min-height: 100vh;">
+  <div class="dashboard-container">
+    
     <!-- Sidebar -->
-    <div class="sidebar" style="width: 250px; background: #0D47A1; color: white; padding: 20px;">
-      <h2 style="color:white;">JWcashnest</h2>
+    <div class="sidebar">
+      <img src="assets/logo.png" alt="JWcashnest Logo" style="width: 140px; margin-bottom: 20px;" />
       <ul style="list-style: none; padding-left: 0;">
         <li><a href="home.html" style="color: white;"><i class="fa fa-home"></i> Dashboard</a></li>
         <li><a href="account.html" style="color: white;"><i class="fa fa-university"></i> Account</a></li>
@@ -27,13 +42,14 @@
     </div>
 
     <!-- Main Content -->
-    <div class="main-content" style="flex: 1; padding: 30px;">
+    <div class="main-content">
       <h2>Transaction Statements</h2>
 
+      <!-- Filters -->
       <div class="card">
         <label for="year">Year:</label>
-        <select id="year" onchange="filterStatements()">
-          <option value="2025" selected>2025</option>
+        <select id="year" onchange="generateTransactions()">
+          <option value="2025">2025</option>
           <option value="2024">2024</option>
           <option value="2023">2023</option>
           <option value="2022">2022</option>
@@ -43,17 +59,21 @@
           <option value="2018">2018</option>
           <option value="2017">2017</option>
         </select>
+
         <label for="month">Month:</label>
-        <select id="month" onchange="filterStatements()">
-          <option value="06" selected>June</option>
+        <select id="month" onchange="generateTransactions()">
+          <option value="06">June</option>
           <option value="05">May</option>
           <option value="04">April</option>
           <option value="03">March</option>
           <option value="02">February</option>
           <option value="01">January</option>
         </select>
+
+        <input type="text" id="searchInput" onkeyup="filterTransactions()" placeholder="Search by date (dd-mm-yyyy)" />
       </div>
 
+      <!-- Transaction Table -->
       <div class="card" style="overflow-x: auto;">
         <table style="width: 100%; border-collapse: collapse;">
           <thead>
@@ -66,40 +86,105 @@
             </tr>
           </thead>
           <tbody id="txnTable">
-            <!-- JS will insert rows -->
+            <!-- Filled by JS -->
           </tbody>
         </table>
       </div>
+
+      <!-- Pagination -->
+      <div class="card pagination" id="pagination" style="text-align:center;"></div>
     </div>
   </div>
 
-  <script src="script.js"></script>
   <script>
-    function filterStatements() {
-      const year = document.getElementById('year').value;
-      const month = document.getElementById('month').value;
-      const tbody = document.getElementById('txnTable');
-      tbody.innerHTML = ''; // Clear previous
+    let allTransactions = [];
+    let currentPage = 1;
+    const rowsPerPage = 20;
 
-      for (let day = 1; day <= 10; day++) {
-        const txnId = 'TXN' + year + month + (day < 10 ? '0' + day : day);
-        const type = day % 2 === 0 ? 'Credit' : 'Debit';
-        const desc = type === 'Credit' ? 'Salary Credit' : 'Online Purchase';
-        const amount = type === 'Credit' ? '₹95,000.00' : '₹4,000.00';
+    function generateTransactions() {
+      const year = document.getElementById("year").value;
+      const month = document.getElementById("month").value;
+      const tbody = document.getElementById("txnTable");
+      const pagination = document.getElementById("pagination");
 
-        const tr = document.createElement('tr');
+      tbody.innerHTML = '';
+      allTransactions = [];
+
+      for (let i = 1; i <= 60; i++) {
+        const date = `${String(i).padStart(2, '0')}-${month}-${year}`;
+        const txnId = `TXN${year}${month}${String(i).padStart(2, '0')}`;
+        const type = i % 2 === 0 ? 'Credit' : 'Debit';
+        const desc = type === 'Credit' ? 'UPI Refund' : 'POS Purchase';
+        const amt = type === 'Credit' ? '₹9,500.00' : '₹4,000.00';
+
+        allTransactions.push({ txnId, date, desc, type, amt });
+      }
+
+      currentPage = 1;
+      displayPage(currentPage);
+    }
+
+    function displayPage(page) {
+      const tbody = document.getElementById("txnTable");
+      const pagination = document.getElementById("pagination");
+      tbody.innerHTML = '';
+      pagination.innerHTML = '';
+
+      const start = (page - 1) * rowsPerPage;
+      const end = start + rowsPerPage;
+      const filtered = allTransactions.slice(start, end);
+
+      for (const tx of filtered) {
+        const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td>${txnId}</td>
-          <td>${day}-${month}-${year}</td>
-          <td>${desc}</td>
-          <td>${type}</td>
-          <td>${amount}</td>
+          <td>${tx.txnId}</td>
+          <td>${tx.date}</td>
+          <td>${tx.desc}</td>
+          <td>${tx.type}</td>
+          <td>${tx.amt}</td>
         `;
         tbody.appendChild(tr);
       }
+
+      const pageCount = Math.ceil(allTransactions.length / rowsPerPage);
+      for (let i = 1; i <= pageCount; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        if (i === page) btn.classList.add("active");
+        btn.onclick = () => {
+          currentPage = i;
+          displayPage(i);
+        };
+        pagination.appendChild(btn);
+      }
     }
 
-    window.onload = filterStatements;
+    function filterTransactions() {
+      const search = document.getElementById("searchInput").value.toLowerCase();
+      const tbody = document.getElementById("txnTable");
+      tbody.innerHTML = '';
+
+      const filtered = allTransactions.filter(tx =>
+        tx.date.toLowerCase().includes(search)
+      );
+
+      for (const tx of filtered) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${tx.txnId}</td>
+          <td>${tx.date}</td>
+          <td>${tx.desc}</td>
+          <td>${tx.type}</td>
+          <td>${tx.amt}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+
+      document.getElementById("pagination").innerHTML = '';
+    }
+
+    window.onload = generateTransactions;
   </script>
 </body>
 </html>
+
