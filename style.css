@@ -60,13 +60,13 @@ a {
   flex: 1;
 }
 
-.card {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  margin-bottom: 25px;
+.card i.fa-eye,
+.card i.fa-eye-slash {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #0071ce;
 }
+
 
 input[type="text"],
 input[type="password"],
