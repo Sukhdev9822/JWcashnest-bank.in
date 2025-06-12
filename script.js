@@ -1,4 +1,4 @@
-// ===== Login Validation with Timestamp Storage =====
+// ===== Login Validation & Timestamp =====
 function loginUser() {
   const userId = document.getElementById("userId").value.trim();
   const password = document.getElementById("password").value.trim();
@@ -38,10 +38,12 @@ function toggleBalance() {
 
   if (!balanceSpan) return;
 
-  if (balanceSpan.dataset.original === undefined) {
+  // Store original balance if not already
+  if (!balanceSpan.dataset.original) {
     balanceSpan.dataset.original = balanceSpan.textContent;
   }
 
+  // Toggle visibility
   if (balanceSpan.textContent.includes("•")) {
     balanceSpan.textContent = balanceSpan.dataset.original;
     icon?.classList.replace("fa-eye-slash", "fa-eye");
@@ -51,15 +53,17 @@ function toggleBalance() {
   }
 }
 
-// ===== Set Recent Login Time =====
+// ===== Show Recent Login Timestamp on Dashboard =====
 function showRecentLoginTime() {
-  const lastLogin = localStorage.getItem("lastLogin");
   const loginEl = document.getElementById("recentLogin");
-  if (lastLogin && loginEl) {
+  const lastLogin = localStorage.getItem("lastLogin");
+
+  if (loginEl && lastLogin) {
     loginEl.textContent = lastLogin;
   }
 }
 
-// Call it in home.html after DOM loads
+// Call automatically when DOM is ready
 window.addEventListener("DOMContentLoaded", showRecentLoginTime);
+
 
