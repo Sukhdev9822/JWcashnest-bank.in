@@ -30,20 +30,21 @@ function togglePasswordVisibility(inputId, iconId) {
 }
 
 // ===== BALANCE TOGGLE =====
-function toggleBalance(id, iconId, actualBalance) {
-  const field = document.getElementById(id);
+function toggleMaskedText(id, iconId, realValue) {
+  const element = document.getElementById(id);
   const icon = document.getElementById(iconId);
 
-  if (field.textContent.includes("•")) {
-    field.textContent = actualBalance;
+  if (element.textContent.includes("•")) {
+    element.textContent = realValue;
     icon.classList.remove("fa-eye");
     icon.classList.add("fa-eye-slash");
   } else {
-    field.textContent = "•".repeat(actualBalance.length);
+    element.textContent = "•".repeat(realValue.length);
     icon.classList.remove("fa-eye-slash");
     icon.classList.add("fa-eye");
   }
 }
+
 
   }
 }
