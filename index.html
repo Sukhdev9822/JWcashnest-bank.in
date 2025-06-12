@@ -15,24 +15,18 @@
     }
 
     .login-box {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       padding: 30px;
-      width: 350px;
+      width: 360px;
       margin: 100px auto;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
 
-    .login-box img {
-      display: block;
-      margin: 0 auto 20px;
-      max-width: 140px;
-    }
-
-    .login-box h2 {
+    .login-box h1 {
       text-align: center;
-      margin-bottom: 20px;
       color: #002147;
+      margin-bottom: 25px;
     }
 
     input {
@@ -41,6 +35,7 @@
       margin: 10px 0;
       border-radius: 6px;
       border: 1px solid #ccc;
+      font-size: 15px;
     }
 
     button {
@@ -51,6 +46,7 @@
       border: none;
       border-radius: 6px;
       font-weight: bold;
+      font-size: 16px;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -59,32 +55,32 @@
       background: #004080;
     }
 
-    .eye-icon {
-      position: absolute;
-      right: 15px;
-      top: 41px;
-      cursor: pointer;
-      color: #0071ce;
-    }
-
     .input-group {
       position: relative;
+    }
+
+    .input-group i {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #0071ce;
     }
   </style>
 </head>
 <body>
 
   <div class="login-box">
-    <img src="logo.png" alt="JWcashnest BANK Logo" />
-    <h2>Login</h2>
+    <h1>JWcashnest BANK</h1>
     <form onsubmit="validateLogin(event)">
       <input type="text" id="user-id" placeholder="User ID" required />
-      
+
       <div class="input-group">
         <input type="password" id="password" placeholder="Password" required />
-        <i class="fa fa-eye eye-icon" id="toggle-password" onclick="togglePasswordVisibility('password', 'toggle-password')"></i>
+        <i class="fa fa-eye" id="toggle-password" onclick="togglePasswordVisibility('password', 'toggle-password')"></i>
       </div>
-      
+
       <button type="submit">Login</button>
     </form>
   </div>
@@ -92,6 +88,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
