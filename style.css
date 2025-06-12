@@ -1,106 +1,67 @@
-/* ===== RESET & BASE STYLES ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
+// ===== LOGIN FUNCTION =====
+function loginUser() {
+  const userId = document.getElementById("userId").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-body {
-  font-size: 16px;
-  background-color: #f5f7fa;
-  color: #333;
-}
-
-/* ===== CARD STYLE ===== */
-.card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  margin: 15px 0;
-}
-
-/* ===== BUTTON ===== */
-button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background-color: #0071ce;
-  color: white;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #005da1;
-}
-
-/* ===== DASHBOARD LAYOUT ===== */
-.dashboard-container {
-  display: flex;
-  min-height: 100vh;
-}
-
-.sidebar {
-  width: 250px;
-  background-color: #002147;
-  padding: 20px;
-  color: white;
-  min-height: 100vh;
-}
-
-.sidebar img {
-  max-width: 100%;
-  margin-bottom: 20px;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar li {
-  margin: 12px 0;
-}
-
-.sidebar a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  display: block;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background 0.2s ease;
-}
-
-.sidebar a:hover {
-  background-color: #004080;
-}
-
-.main-content {
-  flex: 1;
-  padding: 30px;
-  background-color: #f5f7fa;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .dashboard-container {
-    flex-direction: column;
+  if (!userId || !password) {
+    alert("Both User ID and Password are required.");
+    return;
   }
 
-  .sidebar {
-    width: 100%;
-    min-height: auto;
-  }
-
-  .main-content {
-    padding: 15px;
+  if (userId === "Sukhdevmondal147258" && password === "JW-5858") {
+    const now = new Date().toLocaleString();
+    localStorage.setItem("jwcashnestLoggedIn", "true");
+    localStorage.setItem("lastLogin", now);
+    window.location.href = "home.html";
+  } else {
+    alert("Invalid credentials. Please try again.");
   }
 }
+
+// ===== PASSWORD TOGGLE =====
+function togglePassword() {
+  const pwdInput = document.getElementById("password");
+  const eyeIcon = document.getElementById("toggleEye");
+
+  if (pwdInput.type === "password") {
+    pwdInput.type = "text";
+    eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+  } else {
+    pwdInput.type = "password";
+    eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+  }
+}
+
+// ===== BALANCE TOGGLE =====
+function toggleBalance() {
+  const balanceSpan = document.getElementById("balance");
+  const icon = document.getElementById("balanceEye");
+
+  if (!balanceSpan || !icon) return;
+
+  const isHidden = balanceSpan.textContent.includes("•");
+
+  if (isHidden) {
+    balanceSpan.textContent = balanceSpan.dataset.original || "8,95,74,000.52";
+    icon.classList.replace("fa-eye-slash", "fa-eye");
+  } else {
+    balanceSpan.dataset.original = balanceSpan.textContent;
+    balanceSpan.textContent = "••••••••••";
+    icon.classList.replace("fa-eye", "fa-eye-slash");
+  }
+}
+
+// ===== SHOW RECENT LOGIN TIME =====
+function showRecentLoginTime() {
+  const loginEl = document.getElementById("recentLogin");
+  const lastLogin = localStorage.getItem("lastLogin");
+
+  if (loginEl && lastLogin) {
+    loginEl.textContent = lastLogin;
+  }
+}
+
+// ===== INIT ON LOAD =====
+window.addEventListener("DOMContentLoaded", showRecentLoginTime);
 
 
