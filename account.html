@@ -6,46 +6,47 @@
   <title>JWcashnest BANK - Account</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      background: url("assets/bank-bg.jpg") no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
-  <div class="dashboard-container" style="display: flex; min-height: 100vh;">
+  <div class="dashboard-container">
     <!-- Sidebar -->
-    <div class="sidebar" style="width: 250px; background: #0D47A1; color: white; padding: 20px;">
-      <h2 style="color:white;">JWcashnest</h2>
-      <ul style="list-style: none; padding-left: 0;">
-        <li><a href="home.html" style="color: white;"><i class="fa fa-home"></i> Dashboard</a></li>
-        <li><a href="account.html" style="color: white;"><i class="fa fa-university"></i> Account</a></li>
-        <li><a href="statements.html" style="color: white;"><i class="fa fa-file-invoice"></i> Statements</a></li>
-        <li><a href="transfer.html" style="color: white;"><i class="fa fa-exchange-alt"></i> Transfer</a></li>
-        <li><a href="beneficiaries.html" style="color: white;"><i class="fa fa-users"></i> Beneficiaries</a></li>
-        <li><a href="bills.html" style="color: white;"><i class="fa fa-receipt"></i> Bills</a></li>
-        <li><a href="loans.html" style="color: white;"><i class="fa fa-credit-card"></i> Loans</a></li>
-        <li><a href="support.html" style="color: white;"><i class="fa fa-headset"></i> Support</a></li>
-        <li><a href="profile.html" style="color: white;"><i class="fa fa-user-circle"></i> Profile</a></li>
-        <li><a href="logout.html" style="color: white;"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+    <div class="sidebar">
+      <img src="assets/logo.png" alt="JWcashnest Logo" style="width: 140px; margin-bottom: 20px;" />
+      <ul>
+        <li><a href="home.html"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li><a href="account.html"><i class="fa fa-university"></i> Account</a></li>
+        <li><a href="statements.html"><i class="fa fa-file-invoice"></i> Statements</a></li>
+        <li><a href="transfer.html"><i class="fa fa-exchange-alt"></i> Transfer</a></li>
+        <li><a href="beneficiaries.html"><i class="fa fa-users"></i> Beneficiaries</a></li>
+        <li><a href="bills.html"><i class="fa fa-receipt"></i> Bills</a></li>
+        <li><a href="loans.html"><i class="fa fa-credit-card"></i> Loans</a></li>
+        <li><a href="support.html"><i class="fa fa-headset"></i> Support</a></li>
+        <li><a href="profile.html"><i class="fa fa-user-circle"></i> Profile</a></li>
+        <li><a href="logout.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
       </ul>
     </div>
 
     <!-- Main Content -->
-    <div class="main-content" style="flex: 1; padding: 30px;">
+    <div class="main-content">
       <h2>Account Summary</h2>
-      
-      <div class="card">
-        <p><strong>Name:</strong> Sukhdev Mondal</p>
-        <p><strong>Account Number:</strong> 1000054871245007</p>
-        <p><strong>IFSC Code:</strong> JWCN0001123</p>
-        <p><strong>Account Type:</strong> Savings</p>
-        <p><strong>Aadhaar:</strong> 671622353722</p>
-        <p><strong>PAN:</strong> EUKPM1620L</p>
-        <p><strong>Email:</strong> sukhdevmondal@example.com</p>
-        <p><strong>Phone:</strong> 8420149381</p>
-        <p><strong>Current Balance:</strong> ₹ <span id="accBalance">8,95,74,000.52</span>
-          <i class="fa fa-eye" id="accEye" style="cursor:pointer;" onclick="toggleBalance()"></i>
-        </p>
-      </div>
 
-      <div class="card" style="background: #e3f2fd;">
-        <strong>💡 Tip:</strong> Update your PAN and Aadhaar to avoid transaction limits.
+      <div class="card">
+        <p><strong>Account Holder:</strong> Sukhdev Mondal</p>
+        <p><strong>Account Number:</strong> 1000054871245007</p>
+        <p>
+          <strong>Balance:</strong> ₹ <span id="balance">••••••••••</span>
+          <i class="fa fa-eye-slash" id="balanceEye" style="cursor:pointer;" onclick="toggleBalance()"></i>
+        </p>
+        <p><strong>IFSC Code:</strong> JWCASH000007</p>
+        <p><strong>Aadhaar:</strong> 6716 2235 3722</p>
+        <p><strong>PAN:</strong> EUKPM1620L</p>
       </div>
     </div>
   </div>
@@ -53,3 +54,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
