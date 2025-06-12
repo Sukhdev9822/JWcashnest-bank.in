@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JWcashnest BANK - Account</title>
+  <title>JWcashnest BANK - Statements</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
@@ -11,6 +11,58 @@
       background: url("assets/bank-bg.jpg") no-repeat center center fixed;
       background-size: cover;
       margin: 0;
+    }
+
+    .transaction-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .transaction-table th, .transaction-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .transaction-table th {
+      background-color: #f0f0f0;
+    }
+
+    .credit {
+      color: green;
+      font-weight: bold;
+    }
+
+    .debit {
+      color: red;
+      font-weight: bold;
+    }
+
+    .pagination {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .pagination button {
+      padding: 6px 12px;
+      margin: 0 5px;
+      background: #0071ce;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .pagination button:hover {
+      background: #005da1;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
     }
   </style>
 </head>
@@ -35,23 +87,123 @@
 
     <!-- Main Content -->
     <div class="main-content">
-      <h2>Account Summary</h2>
+      <h2>Transaction Statements</h2>
 
-      <div class="card">
-        <p><strong>Account Holder:</strong> Sukhdev Mondal</p>
-        <p><strong>Account Number:</strong> 1000054871245007</p>
-        <p>
-          <strong>Balance:</strong> ₹ <span id="balance">••••••••••</span>
-          <i class="fa fa-eye-slash" id="balanceEye" style="cursor:pointer;" onclick="toggleBalance()"></i>
-        </p>
-        <p><strong>IFSC Code:</strong> JWCASH000007</p>
-        <p><strong>Aadhaar:</strong> 6716 2235 3722</p>
-        <p><strong>PAN:</strong> EUKPM1620L</p>
+      <!-- Filter Section -->
+      <div class="filters">
+        <input type="date" id="filterDate" />
+        <select id="filterYear">
+          <option value="">All Years</option>
+          <script>
+            for (let y = 2017; y <= 2025; y++) {
+              document.write(`<option value="${y}">${y}</option>`);
+            }
+          </script>
+        </select>
+        <button onclick="applyFilters()">Apply Filters</button>
       </div>
+
+      <!-- Transaction Table -->
+      <table class="transaction-table" id="transactionTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <!-- Pagination -->
+      <div class="pagination" id="pagination"></div>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const data = [];
+    const today = new Date();
+    const startDate = new Date("2017-01-01");
+    const now = new Date("2025-12-31");
+
+    // Generate dummy transactions
+    let id = 10000;
+    for (let d = new Date(startDate); d <= now; d.setDate(d.getDate() + 1)) {
+      const type = Math.random() > 0.5 ? "credit" : "debit";
+      const amount = Math.floor(Math.random() * 9000 + 1000);
+      data.push({
+        id: id++,
+        date: d.toISOString().split("T")[0],
+        desc: type === "credit" ? "Salary Credit" : "Online Purchase",
+        amount: `₹${amount.toLocaleString()}`,
+        type: type
+      });
+    }
+
+    let currentPage = 1;
+    const rowsPerPage = 20;
+
+    function renderTable(page = 1) {
+      const tableBody = document.querySelector("#transactionTable tbody");
+      tableBody.innerHTML = "";
+
+      const start = (page - 1) * rowsPerPage;
+      const end = start + rowsPerPage;
+      const pagedData = data.slice(start, end);
+
+      pagedData.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.id}</td>
+          <td>${row.date}</td>
+          <td>${row.desc}</td>
+          <td>${row.amount}</td>
+          <td class="${row.type}">${row.type}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      renderPagination();
+    }
+
+    function renderPagination() {
+      const pageCount = Math.ceil(data.length / rowsPerPage);
+      const pagDiv = document.getElementById("pagination");
+      pagDiv.innerHTML = "";
+
+      for (let i = 1; i <= pageCount; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        if (i === currentPage) {
+          btn.style.backgroundColor = "#004080";
+        }
+        btn.onclick = () => {
+          currentPage = i;
+          renderTable(currentPage);
+        };
+        pagDiv.appendChild(btn);
+      }
+    }
+
+    function applyFilters() {
+      const date = document.getElementById("filterDate").value;
+      const year = document.getElementById("filterYear").value;
+
+      let filtered = data;
+      if (date) filtered = filtered.filter(t => t.date === date);
+      if (year) filtered = filtered.filter(t => t.date.startsWith(year));
+
+      currentPage = 1;
+      data.length = 0;
+      data.push(...filtered);
+      renderTable(currentPage);
+    }
+
+    renderTable(currentPage);
+  </script>
 </body>
 </html>
+
 
