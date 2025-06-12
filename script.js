@@ -30,17 +30,20 @@ function togglePasswordVisibility(inputId, iconId) {
 
 // ===== BALANCE TOGGLE =====
 function toggleBalance(id, iconId, actualBalance) {
-  const balanceField = document.getElementById(id);
+  const field = document.getElementById(id);
   const icon = document.getElementById(iconId);
 
-  if (balanceField.textContent.includes("•")) {
-    balanceField.textContent = actualBalance;
+  if (field.textContent.includes("•")) {
+    field.textContent = actualBalance;
     icon.classList.remove("fa-eye");
     icon.classList.add("fa-eye-slash");
   } else {
-    balanceField.textContent = "•".repeat(actualBalance.length);
+    field.textContent = "•".repeat(actualBalance.length);
     icon.classList.remove("fa-eye-slash");
     icon.classList.add("fa-eye");
+  }
+}
+
   }
 }
 
