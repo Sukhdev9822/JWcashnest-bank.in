@@ -34,19 +34,20 @@ function togglePassword() {
 
 // ===== BALANCE TOGGLE (HOME + ACCOUNT PAGE) =====
 function toggleBalance() {
-  const balanceSpan = document.getElementById("balance") || document.getElementById("accBalance");
-  const icon = document.getElementById("balanceEye") || document.getElementById("accEye");
+  const balanceSpan = document.getElementById("balance");
+  const icon = document.getElementById("balanceEye");
 
   if (!balanceSpan || !icon) return;
 
   const hidden = balanceSpan.textContent.includes("•");
+
   if (hidden) {
-    balanceSpan.textContent = balanceSpan.dataset.original || "8,95,74,000.52";
+    balanceSpan.textContent = "8,95,74,000.52"; // unmask value
     icon.classList.replace("fa-eye-slash", "fa-eye");
   } else {
-    balanceSpan.dataset.original = balanceSpan.textContent;
     balanceSpan.textContent = "••••••••••";
     icon.classList.replace("fa-eye", "fa-eye-slash");
+  }
   }
 }
 
