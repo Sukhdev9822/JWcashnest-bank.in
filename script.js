@@ -29,27 +29,25 @@ function togglePasswordVisibility(inputId, iconId) {
   }
 }
 
-// ===== BALANCE TOGGLE =====
+// Toggle any text (account/balance) by ID
 function toggleMaskedText(id, iconId, realValue) {
   const element = document.getElementById(id);
   const icon = document.getElementById(iconId);
 
-  if (element.textContent.includes("•")) {
-    element.textContent = realValue;
-    icon.classList.remove("fa-eye");
-    icon.classList.add("fa-eye-slash");
-  } else {
-    element.textContent = "•".repeat(realValue.length);
-    icon.classList.remove("fa-eye-slash");
-    icon.classList.add("fa-eye");
+  if (element && icon) {
+    if (element.textContent.includes("•")) {
+      element.textContent = realValue;
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    } else {
+      element.textContent = "•".repeat(realValue.length);
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
   }
 }
 
-
-  }
-}
-
-// ===== SHOW LOGIN TIME ON HOME =====
+// Show last login time
 function showLoginTime() {
   const time = localStorage.getItem("loginTime");
   if (time && document.getElementById("login-time")) {
@@ -57,5 +55,9 @@ function showLoginTime() {
   }
 }
 
-
-
+// Secure page access
+function enforceLogin() {
+  if (localStorage.getItem("isLoggedIn") !== "true") {
+    window.location.href = "index.html";
+  }
+}
