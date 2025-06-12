@@ -6,21 +6,39 @@
   <title>JWcashnest BANK - Login</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <style>
     body {
       background: url("assets/bank-bg.jpg") no-repeat center center fixed;
       background-size: cover;
+      min-height: 100vh;
+    }
+
+    .login-logo {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .login-logo img {
+      width: 150px;
+      height: auto;
+    }
+
+    .login-box {
+      max-width: 400px;
+      margin: 20px auto;
+      position: relative;
     }
   </style>
 </head>
 <body>
-  <!-- Logo -->
-  <div style="text-align: center; margin-top: 40px;">
-    <img src="assets/logo.png" alt="JWcashnest BANK Logo" style="width: 150px; height: auto;" />
+  <!-- Bank Logo -->
+  <div class="login-logo">
+    <img src="assets/logo.png" alt="JWcashnest BANK Logo" />
   </div>
 
-  <!-- Login Box -->
-  <div class="card" style="max-width: 400px; margin: 20px auto; position: relative;">
+  <!-- Login Form Card -->
+  <div class="card login-box">
     <h2 style="text-align: center;">Login to JWcashnest</h2>
     <input type="text" id="userId" placeholder="User ID" required />
     <div style="position: relative;">
@@ -31,7 +49,7 @@
     <p style="text-align:center;">Don't have an account? <a href="register.html">Register</a></p>
   </div>
 
-  <!-- Ad Banner -->
+  <!-- Banking Offer -->
   <div class="card" style="max-width: 400px; margin: 20px auto; background: #e3f2fd;">
     <strong>📢 Offer:</strong> Get ₹10 Cr credit card limit – <a href="loans.html">Explore Now</a>
   </div>
@@ -39,5 +57,6 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
