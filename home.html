@@ -30,15 +30,20 @@
     <div class="main-content">
       <h2>Welcome, Sukhdev Mondal 👋</h2>
 
-      <div class="card">
-        <h3>Account Overview</h3>
-        <p><strong>Account No:</strong> 1000054871245007</p>
-        <p>
-          <strong>Balance:</strong> ₹
-          <span id="balance">••••••••••</span>
-          <i class="fa fa-eye" id="balance-icon" onclick="toggleBalance('balance', 'balance-icon', '8,95,74,000.52')"></i>
-        </p>
-      </div>
+     <div class="card">
+  <h3>Account Overview</h3>
+  <p>
+    <strong>Account No:</strong>
+    <span id="account-number">1000054871245007</span>
+    <i class="fa fa-eye" id="account-icon" onclick="toggleMaskedText('account-number', 'account-icon', '1000054871245007')"></i>
+  </p>
+  <p>
+    <strong>Balance:</strong> ₹
+    <span id="balance">••••••••••</span>
+    <i class="fa fa-eye" id="balance-icon" onclick="toggleMaskedText('balance', 'balance-icon', '8,95,74,000.52')"></i>
+  </p>
+</div>
+
 
       <div class="card">
         <h3>Recent Login</h3>
