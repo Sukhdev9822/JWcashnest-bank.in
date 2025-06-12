@@ -73,25 +73,52 @@
 
   <div class="login-box">
     <h1>JWcashnest BANK</h1>
-    <form onsubmit="validateLogin(event)">
-  <input type="text" id="user-id" placeholder="User ID" required />
-  
-  <div class="input-group">
-    <input type="password" id="password" placeholder="Password" required />
-    <i class="fa fa-eye" id="toggle-password" onclick="togglePasswordVisibility('password', 'toggle-password')"></i>
+    <form onsubmit="return validateLogin(event)">
+      <input type="text" id="user-id" placeholder="User ID" required />
+
+      <div class="input-group">
+        <input type="password" id="password-input" placeholder="Password" required />
+        <i class="fa fa-eye" id="toggle-password" onclick="togglePasswordVisibility('password-input', 'toggle-password')"></i>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
   </div>
 
-  <button type="submit">Login</button>
-</form>
+  <script>
+    function validateLogin(event) {
+      event.preventDefault();
+      const userId = document.getElementById("user-id").value.trim();
+      const password = document.getElementById("password-input").value.trim();
 
-  <button type="submit">Login</button>
-</form>
+      if (userId === "Sukhdevmondal147258" && password === "JW-5858") {
+        localStorage.setItem("loginTime", new Date().toLocaleString());
+        window.location.href = "home.html";
+        return false;
+      } else {
+        alert("Invalid credentials. Please try again.");
+        return false;
+      }
+    }
 
-  </div>
+    function togglePasswordVisibility(inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
 
-  <script src="script.js"></script>
+      if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+      } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+      }
+    }
+  </script>
 </body>
 </html>
+
 
 
 
