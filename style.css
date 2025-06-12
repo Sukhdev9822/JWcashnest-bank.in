@@ -1,0 +1,106 @@
+/* ================== JWcashnest BANK Global Styles ================== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f8fb;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: #002147;
+  padding: 20px 15px;
+  color: #fff;
+  position: fixed;
+  height: 100vh;
+}
+
+.sidebar img {
+  display: block;
+  margin: 0 auto 20px;
+  max-width: 120px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  display: block;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  background: #004080;
+}
+
+.main-content {
+  margin-left: 240px;
+  padding: 30px 40px;
+  flex: 1;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+}
+
+button {
+  background: #0071ce;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #004080;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #002147;
+}
+
+.eye-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  color: #0071ce;
+}
