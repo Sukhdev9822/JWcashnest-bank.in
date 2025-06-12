@@ -74,15 +74,16 @@
   <div class="login-box">
     <h1>JWcashnest BANK</h1>
     <form onsubmit="validateLogin(event)">
-      <input type="text" id="user-id" placeholder="User ID" required />
+  <input type="text" id="user-id" placeholder="User ID" required />
+  
+  <div class="input-group">
+    <input type="password" id="password" placeholder="Password" required />
+    <i class="fa fa-eye" id="toggle-password" onclick="togglePasswordVisibility('password', 'toggle-password')"></i>
+  </div>
 
-      <div class="input-group">
-        <input type="password" id="password" placeholder="Password" required />
-        <i class="fa fa-eye" id="toggle-password" onclick="togglePasswordVisibility('password', 'toggle-password')"></i>
-      </div>
+  <button type="submit">Login</button>
+</form>
 
-      <button type="submit">Login</button>
-    </form>
   </div>
 
   <script src="script.js"></script>
