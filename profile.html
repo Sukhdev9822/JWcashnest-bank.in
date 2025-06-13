@@ -1,51 +1,17 @@
+<!-- Step 11: profile.html - User Profile Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JWcashnest BANK - Profile</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    body {
-      background: url("assets/bank-bg.jpg") no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-    }
-
-    .profile-info {
-      padding: 15px;
-      background: #fff;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .profile-info h3 {
-      color: #002147;
-    }
-
-    .info-row {
-      margin: 10px 0;
-    }
-
-    .info-row label {
-      font-weight: bold;
-      display: inline-block;
-      width: 120px;
-    }
-
-    .eye-toggle {
-      cursor: pointer;
-      margin-left: 10px;
-      color: #0071ce;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body onload="enforceLogin();">
   <div class="dashboard-container">
-    <!-- Sidebar -->
     <div class="sidebar">
-      <img src="assets/logo.png" alt="JWcashnest Logo" style="width: 140px; margin-bottom: 20px;" />
+      <h2 style="text-align:center; color:white;">JWcashnest BANK</h2>
       <ul>
         <li><a href="home.html"><i class="fa fa-home"></i> Dashboard</a></li>
         <li><a href="account.html"><i class="fa fa-university"></i> Account</a></li>
@@ -55,58 +21,29 @@
         <li><a href="bills.html"><i class="fa fa-receipt"></i> Bills</a></li>
         <li><a href="loans.html"><i class="fa fa-credit-card"></i> Loans</a></li>
         <li><a href="support.html"><i class="fa fa-headset"></i> Support</a></li>
-        <li><a href="profile.html"><i class="fa fa-user-circle"></i> Profile</a></li>
-        <li><a href="logout.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+        <li><a class="active" href="profile.html"><i class="fa fa-user-circle"></i> Profile</a></li>
+        <li><a href="#" onclick="logout()"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
       </ul>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
-      <h2>Personal Profile</h2>
+      <h2>Profile Information</h2>
 
-      <div class="card profile-info">
-        <h3>Sukhdev Mondal</h3>
-
-        <div class="info-row">
-          <label>Aadhaar:</label>
-          <span id="aadhaar">••••••••••••</span>
-          <i class="fa fa-eye eye-toggle" onclick="toggleInfo('aadhaar', '671622353722', this)"></i>
-        </div>
-
-        <div class="info-row">
-          <label>PAN:</label>
-          <span id="pan">••••••••••</span>
-          <i class="fa fa-eye eye-toggle" onclick="toggleInfo('pan', 'EUKPM1620L', this)"></i>
-        </div>
-
-        <div class="info-row">
-          <label>Phone:</label>
-          <span id="phone">8420149381</span>
-        </div>
-
-        <div class="info-row">
-          <label>Email:</label>
-          <span id="email">sukhdevmondal@example.com</span>
-        </div>
+      <div class="card">
+        <h3><i class="fa fa-id-card"></i> Personal Details</h3>
+        <p><strong>Name:</strong> Sukhdev Mondal</p>
+        <p><strong>Aadhaar:</strong> <span class="secure-data">6716 2235 3722</span></p>
+        <p><strong>PAN:</strong> <span class="secure-data">EUKPM1620L</span></p>
+        <p><strong>Phone:</strong> <span class="secure-data">+91 84201 49381</span></p>
+        <p><strong>Email:</strong> <span class="secure-data">sukhdevmondal@example.com</span></p>
+        <button onclick="toggleSecureInfo(this)"><i class="fa fa-eye-slash"></i> Show</button>
       </div>
     </div>
   </div>
 
-  <script>
-    function toggleInfo(id, realValue, icon) {
-      const el = document.getElementById(id);
-      if (el.textContent.includes("•")) {
-        el.textContent = realValue;
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
-      } else {
-        el.textContent = "•".repeat(realValue.length);
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
+
 
 
