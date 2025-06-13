@@ -1,116 +1,130 @@
-/* ================== JWcashnest BANK Global Styles ================== */
+/* Final Updated style.css for JWcashnest BANK */
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: url("bank.jpg") no-repeat center center fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5 url('assets/bank-bg.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #333;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
+  transition: background 0.3s ease;
 }
 
 .dashboard-container {
   display: flex;
   min-height: 100vh;
+  transition: all 0.5s ease-in-out;
 }
 
 .sidebar {
-  width: 220px;
-  background: #002147;
-  padding: 20px 15px;
-  color: #fff;
+  width: 250px;
+  background-color: #0a3d62;
+  color: white;
+  padding-top: 20px;
   position: fixed;
-  height: 100vh;
+  height: 100%;
+  overflow: auto;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
-.sidebar img {
-  display: block;
-  margin: 0 auto 20px;
-  max-width: 120px;
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
 }
 
 .sidebar ul {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
 }
 
-.sidebar ul li {
-  margin: 15px 0;
-}
-
 .sidebar ul li a {
-  color: white;
   display: block;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
   transition: background 0.3s;
 }
 
-.sidebar ul li a:hover,
-.sidebar ul li a.active {
-  background: #004080;
+.sidebar ul li a.active, .sidebar ul li a:hover {
+  background-color: #1e90ff;
 }
 
 .main-content {
-  margin-left: 240px;
-  padding: 30px 40px;
-  flex: 1;
+  margin-left: 250px;
+  padding: 20px;
+  flex-grow: 1;
+  animation: slideIn 0.6s ease-in-out;
 }
 
-.card i.fa-eye,
-.card i.fa-eye-slash {
-  margin-left: 10px;
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.01);
+}
+
+button, .button {
+  background-color: #1e90ff;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
   cursor: pointer;
-  color: #0071ce;
+  transition: background 0.3s ease;
 }
 
+button:hover, .button:hover {
+  background-color: #0c68d1;
+}
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="number"],
-select,
-textarea {
+input[type="text"], input[type="password"], input[type="number"], select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  margin-top: 6px;
+  margin-top: 5px;
   margin-bottom: 15px;
-  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-button {
-  background: #0071ce;
-  color: white;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
-  font-size: 15px;
-}
-
-button:hover {
-  background: #004080;
-}
-
-h2 {
-  margin-bottom: 20px;
-  color: #002147;
-}
-
-h3 {
-  margin-top: 0;
-}
-
-.eye-icon {
+.fa-eye, .fa-eye-slash {
   cursor: pointer;
   margin-left: 10px;
-  color: #0071ce;
+}
+
+.secure-data {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+}
+
+.secure-data.show {
+  filter: none;
+}
+
+.logout-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('assets/bank-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.logout-message {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @media (max-width: 768px) {
@@ -126,6 +140,6 @@ h3 {
 
   .main-content {
     margin-left: 0;
-    padding: 20px;
   }
 }
+
