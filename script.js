@@ -55,9 +55,24 @@ function showLoginTime() {
   }
 }
 
-// Secure page access
+// Enforce login session on protected pages
 function enforceLogin() {
   if (localStorage.getItem("isLoggedIn") !== "true") {
     window.location.href = "index.html";
+  }
+}
+
+// Login success: set session
+function validateLogin(event) {
+  event.preventDefault();
+  const userId = document.getElementById("user-id").value.trim();
+  const password = document.getElementById("password-input").value.trim();
+
+  if (userId === "Sukhdevmondal147258" && password === "JW-5858") {
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("loginTime", new Date().toLocaleString());
+    window.location.href = "home.html";
+  } else {
+    alert("Invalid credentials. Please try again.");
   }
 }
