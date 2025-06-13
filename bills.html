@@ -1,118 +1,58 @@
+<!-- Step 8: bills.html - Bill Payment Interface -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JWcashnest BANK - Bills</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    body {
-      background: url("assets/bank-bg.jpg") no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-    }
-
-    .bill-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fff;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 10px;
-    }
-
-    .bill-card h4 {
-      margin: 0;
-      font-size: 18px;
-    }
-
-    .bill-card span {
-      font-weight: bold;
-      font-size: 16px;
-      color: #004080;
-    }
-
-    .bill-card button {
-      padding: 6px 14px;
-      border: none;
-      background: #0071ce;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .bill-card button:hover {
-      background: #004080;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body onload="enforceLogin();">
   <div class="dashboard-container">
-    <!-- Sidebar -->
     <div class="sidebar">
-      <img src="assets/logo.png" alt="JWcashnest Logo" style="width: 140px; margin-bottom: 20px;" />
+      <h2 style="text-align:center; color:white;">JWcashnest BANK</h2>
       <ul>
         <li><a href="home.html"><i class="fa fa-home"></i> Dashboard</a></li>
         <li><a href="account.html"><i class="fa fa-university"></i> Account</a></li>
         <li><a href="statements.html"><i class="fa fa-file-invoice"></i> Statements</a></li>
         <li><a href="transfer.html"><i class="fa fa-exchange-alt"></i> Transfer</a></li>
         <li><a href="beneficiaries.html"><i class="fa fa-users"></i> Beneficiaries</a></li>
-        <li><a href="bills.html"><i class="fa fa-receipt"></i> Bills</a></li>
+        <li><a class="active" href="bills.html"><i class="fa fa-receipt"></i> Bills</a></li>
         <li><a href="loans.html"><i class="fa fa-credit-card"></i> Loans</a></li>
         <li><a href="support.html"><i class="fa fa-headset"></i> Support</a></li>
         <li><a href="profile.html"><i class="fa fa-user-circle"></i> Profile</a></li>
-        <li><a href="logout.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+        <li><a href="#" onclick="logout()"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
       </ul>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
-      <h2>Pay Your Bills</h2>
+      <h2>Pay Bills</h2>
 
       <div class="card">
-        <div class="bill-card">
-          <div>
-            <h4><i class="fa fa-bolt"></i> Electricity</h4>
-            <span>₹1,200.00</span>
-          </div>
-          <button onclick="pay('Electricity')">Pay Now</button>
-        </div>
+        <form onsubmit="event.preventDefault(); alert('Bill payment simulated!');">
+          <label for="bill-type">Bill Type</label><br>
+          <select id="bill-type" required>
+            <option value="">-- Select --</option>
+            <option value="electricity">Electricity</option>
+            <option value="water">Water</option>
+            <option value="mobile">Mobile Recharge</option>
+            <option value="broadband">Broadband</option>
+            <option value="gas">Gas</option>
+          </select><br><br>
 
-        <div class="bill-card">
-          <div>
-            <h4><i class="fa fa-mobile-alt"></i> Mobile Recharge</h4>
-            <span>₹349.00</span>
-          </div>
-          <button onclick="pay('Mobile Recharge')">Pay Now</button>
-        </div>
+          <label for="consumer-id">Consumer ID / Number</label><br>
+          <input type="text" id="consumer-id" required><br><br>
 
-        <div class="bill-card">
-          <div>
-            <h4><i class="fa fa-tint"></i> Water Bill</h4>
-            <span>₹500.00</span>
-          </div>
-          <button onclick="pay('Water Bill')">Pay Now</button>
-        </div>
+          <label for="amount">Amount (INR)</label><br>
+          <input type="number" id="amount" required min="10" max="20000"><br><br>
 
-        <div class="bill-card">
-          <div>
-            <h4><i class="fa fa-wifi"></i> Internet</h4>
-            <span>₹799.00</span>
-          </div>
-          <button onclick="pay('Internet')">Pay Now</button>
-        </div>
+          <button type="submit">Pay Now</button>
+        </form>
       </div>
     </div>
   </div>
-
-  <script>
-    function pay(type) {
-      alert(type + " payment successful!");
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
 
