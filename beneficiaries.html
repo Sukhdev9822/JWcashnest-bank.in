@@ -1,95 +1,50 @@
+<!-- Step 7: beneficiaries.html - Saved Beneficiaries -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JWcashnest BANK - Beneficiaries</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    body {
-      background: url("assets/bank-bg.jpg") no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-    }
-
-    .beneficiary-card {
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      background: #fff;
-      margin-bottom: 15px;
-    }
-
-    .beneficiary-card h4 {
-      margin-bottom: 8px;
-      color: #002147;
-    }
-
-    .beneficiary-card p {
-      margin: 5px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body onload="enforceLogin();">
   <div class="dashboard-container">
-    <!-- Sidebar -->
     <div class="sidebar">
-      <img src="assets/logo.png" alt="JWcashnest Logo" style="width: 140px; margin-bottom: 20px;" />
+      <h2 style="text-align:center; color:white;">JWcashnest BANK</h2>
       <ul>
         <li><a href="home.html"><i class="fa fa-home"></i> Dashboard</a></li>
         <li><a href="account.html"><i class="fa fa-university"></i> Account</a></li>
         <li><a href="statements.html"><i class="fa fa-file-invoice"></i> Statements</a></li>
         <li><a href="transfer.html"><i class="fa fa-exchange-alt"></i> Transfer</a></li>
-        <li><a href="beneficiaries.html"><i class="fa fa-users"></i> Beneficiaries</a></li>
+        <li><a class="active" href="beneficiaries.html"><i class="fa fa-users"></i> Beneficiaries</a></li>
         <li><a href="bills.html"><i class="fa fa-receipt"></i> Bills</a></li>
         <li><a href="loans.html"><i class="fa fa-credit-card"></i> Loans</a></li>
         <li><a href="support.html"><i class="fa fa-headset"></i> Support</a></li>
         <li><a href="profile.html"><i class="fa fa-user-circle"></i> Profile</a></li>
-        <li><a href="logout.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+        <li><a href="#" onclick="logout()"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
       </ul>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
       <h2>Saved Beneficiaries</h2>
 
-      <!-- Indian Beneficiaries -->
       <div class="card">
-        <h3><i class="fa fa-flag"></i> Indian Beneficiaries</h3>
-
-        <div class="beneficiary-card">
-          <h4>Rahul Sharma</h4>
-          <p><strong>Account:</strong> 503002781239</p>
-          <p><strong>IFSC:</strong> HDFC0004512</p>
-          <p><strong>Type:</strong> Savings</p>
-        </div>
-
-        <div class="beneficiary-card">
-          <h4>Meera Iyer</h4>
-          <p><strong>Account:</strong> 202010039845</p>
-          <p><strong>IFSC:</strong> SBIN0002145</p>
-          <p><strong>Type:</strong> Salary</p>
-        </div>
+        <h3>Indian Beneficiaries</h3>
+        <ul>
+          <li><strong>Rohit Sharma</strong> - SBI - IFSC: SBIN0001234</li>
+          <li><strong>Amit Das</strong> - HDFC - IFSC: HDFC0005678</li>
+          <li><strong>Pooja Nair</strong> - ICICI - IFSC: ICIC0009123</li>
+        </ul>
       </div>
 
-      <!-- International Beneficiaries -->
       <div class="card">
-        <h3><i class="fa fa-globe"></i> International Beneficiaries</h3>
-
-        <div class="beneficiary-card">
-          <h4>Daniel Cruz</h4>
-          <p><strong>Account:</strong> US91000566723</p>
-          <p><strong>SWIFT:</strong> BOFAUS3N</p>
-          <p><strong>Country:</strong> United States</p>
-        </div>
-
-        <div class="beneficiary-card">
-          <h4>Elena Petrova</h4>
-          <p><strong>Account:</strong> RU55008007732</p>
-          <p><strong>SWIFT:</strong> SABRRUMM</p>
-          <p><strong>Country:</strong> Russia</p>
-        </div>
+        <h3>International Beneficiaries</h3>
+        <ul>
+          <li><strong>Anne Keller</strong> - Deutsche Bank - SWIFT: DEUTDEFF</li>
+          <li><strong>John Adams</strong> - HSBC UK - SWIFT: HBUKGB4B</li>
+          <li><strong>Mei Lin</strong> - DBS Singapore - SWIFT: DBSSSGSG</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -97,4 +52,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
