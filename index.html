@@ -1,77 +1,35 @@
-<!-- index.html already created. Now this is script.js -->
-<script>
-// Enforce session login
-function enforceLogin() {
-  if (localStorage.getItem("isLoggedIn") !== "true") {
-    window.location.href = "index.html";
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JWcashnest BANK - Login</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="dashboard-container" style="justify-content: center; align-items: center; height: 100vh;">
+    <div class="card" style="max-width: 400px; width: 100%; text-align: center; background-color: white;">
+      <h2 style="margin-bottom: 10px;"><span style="color:#003366">JW</span><strong>cashnest</strong> <span style="color:#003366">BANK</span></h2>
+      <form id="loginForm">
+        <input type="text" id="userid" placeholder="User ID" required/>
+        <div style="position: relative;">
+          <input type="password" id="password" placeholder="Password" required />
+          <i class="fa fa-eye" id="toggleEye" style="position: absolute; right: 10px; top: 10px;" onclick="togglePassword()"></i>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <p style="margin-top: 15px;">Don't have an account? <a href="register.html">Register</a></p>
+    </div>
 
-// Validate credentials and set session
-function validateLogin(event) {
-  event.preventDefault();
-  const userId = document.getElementById("user-id").value.trim();
-  const password = document.getElementById("password-input").value.trim();
+    <div class="card" style="max-width: 400px; width: 100%; background-color: #e8f4ff; margin-top: 20px;">
+      <p><i class="fa fa-bullhorn"></i> <strong>Offer:</strong> Get ₹10 Cr credit card limit – <a href="loans.html">Explore Now</a></p>
+    </div>
+  </div>
 
-  if (userId === "Sukhdevmondal147258" && password === "JW-5858") {
-    localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("loginTime", new Date().toLocaleString());
-    window.location.href = "home.html";
-  } else {
-    alert("Invalid credentials. Please try again.");
-  }
-}
-
-// Toggle password visibility
-function togglePasswordVisibility(inputId, iconId) {
-  const input = document.getElementById(inputId);
-  const icon = document.getElementById(iconId);
-
-  if (input.type === "password") {
-    input.type = "text";
-    icon.classList.remove("fa-eye");
-    icon.classList.add("fa-eye-slash");
-  } else {
-    input.type = "password";
-    icon.classList.remove("fa-eye-slash");
-    icon.classList.add("fa-eye");
-  }
-}
-
-// Toggle balance or account field visibility
-function toggleMaskedText(id, iconId, realValue) {
-  const field = document.getElementById(id);
-  const icon = document.getElementById(iconId);
-
-  if (field && icon) {
-    if (field.textContent.includes("•")) {
-      field.textContent = realValue;
-      icon.classList.remove("fa-eye");
-      icon.classList.add("fa-eye-slash");
-    } else {
-      field.textContent = "•".repeat(realValue.length);
-      icon.classList.remove("fa-eye-slash");
-      icon.classList.add("fa-eye");
-    }
-  }
-}
-
-// Show recent login time
-function showLoginTime() {
-  const loginTime = localStorage.getItem("loginTime");
-  const loginSpan = document.getElementById("login-time");
-  if (loginTime && loginSpan) {
-    loginSpan.textContent = loginTime;
-  }
-}
-
-// Logout clear session
-function logout() {
-  localStorage.removeItem("isLoggedIn");
-  localStorage.removeItem("loginTime");
-  window.location.href = "index.html";
-}
-</script>
+  <script src="script.js"></script>
+</body>
+</html>
 
 
 
