@@ -69,16 +69,33 @@ function toggleAccount() {
 function toggleBalance() {
   const bal = document.getElementById("balanceAmount");
   const icon = document.getElementById("balanceEye");
+
   if (bal.classList.contains("secure-data")) {
     bal.classList.remove("secure-data");
-    icon.classList.remove("fa-eye-slash");
-    icon.classList.add("fa-eye");
-  } else {
-    bal.classList.add("secure-data");
     icon.classList.remove("fa-eye");
     icon.classList.add("fa-eye-slash");
+  } else {
+    bal.classList.add("secure-data");
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
   }
 }
+
+function toggleAccount() {
+  const acc = document.getElementById("accountNo");
+  const icon = document.getElementById("accountEye");
+
+  if (acc.classList.contains("secure-data")) {
+    acc.classList.remove("secure-data");
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    acc.classList.add("secure-data");
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
+
 
 // ✅ Toggle profile info (Aadhaar/PAN/etc.)
 function toggleSecureInfo(btn) {
