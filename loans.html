@@ -1,54 +1,17 @@
+<!-- Step 9: loans.html - Loan & Credit Card Offers -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JWcashnest BANK - Loans & Credit Cards</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    body {
-      background: url("assets/bank-bg.jpg") no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-    }
-
-    .loan-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .loan-card h3 {
-      color: #002147;
-      margin-bottom: 10px;
-    }
-
-    .loan-card p {
-      margin: 6px 0;
-    }
-
-    .loan-card button {
-      padding: 6px 14px;
-      border: none;
-      background: #0071ce;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .loan-card button:hover {
-      background: #004080;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body onload="enforceLogin();">
   <div class="dashboard-container">
-    <!-- Sidebar -->
     <div class="sidebar">
-      <img src="assets/logo.png" alt="JWcashnest Logo" style="width: 140px; margin-bottom: 20px;" />
+      <h2 style="text-align:center; color:white;">JWcashnest BANK</h2>
       <ul>
         <li><a href="home.html"><i class="fa fa-home"></i> Dashboard</a></li>
         <li><a href="account.html"><i class="fa fa-university"></i> Account</a></li>
@@ -56,34 +19,46 @@
         <li><a href="transfer.html"><i class="fa fa-exchange-alt"></i> Transfer</a></li>
         <li><a href="beneficiaries.html"><i class="fa fa-users"></i> Beneficiaries</a></li>
         <li><a href="bills.html"><i class="fa fa-receipt"></i> Bills</a></li>
-        <li><a href="loans.html"><i class="fa fa-credit-card"></i> Loans</a></li>
+        <li><a class="active" href="loans.html"><i class="fa fa-credit-card"></i> Loans</a></li>
         <li><a href="support.html"><i class="fa fa-headset"></i> Support</a></li>
         <li><a href="profile.html"><i class="fa fa-user-circle"></i> Profile</a></li>
-        <li><a href="logout.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+        <li><a href="#" onclick="logout()"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
       </ul>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
-      <h2>Loans & Credit Cards</h2>
+      <h2>Loans & Credit Card Offers</h2>
 
-      <div class="card loan-card">
-        <h3><i class="fa fa-credit-card"></i> JW Titanium Credit Card</h3>
-        <p><strong>Available Credit:</strong> ₹10,00,00,000.00</p>
-        <p><strong>Benefits:</strong> 1.5% cashback on all spends, airport lounge access, no joining fee</p>
-        <button onclick="alert('Card application submitted!')">Apply Now</button>
+      <div class="card">
+        <h3><i class="fa fa-piggy-bank"></i> Personal Loan Offer</h3>
+        <p>Get instant approval up to ₹25 lakhs with interest rates starting at 10.5% p.a. No collateral required.</p>
+        <button onclick="alert('Personal Loan Enquiry Submitted!')">Apply Now</button>
       </div>
 
-      <div class="card loan-card">
-        <h3><i class="fa fa-hand-holding-usd"></i> Personal Loan Offer</h3>
-        <p><strong>Pre-approved Amount:</strong> ₹25,00,000.00</p>
-        <p><strong>Interest Rate:</strong> 10.99% p.a.</p>
-        <p><strong>Tenure:</strong> Up to 60 months</p>
-        <button onclick="alert('Loan application submitted!')">Apply Now</button>
+      <div class="card">
+        <h3><i class="fa fa-car"></i> Car Loan</h3>
+        <p>Finance your dream car with up to 90% on-road funding. Attractive rates and fast disbursal.</p>
+        <button onclick="alert('Car Loan Enquiry Submitted!')">Apply Now</button>
       </div>
+
+      <div class="card">
+        <h3><i class="fa fa-home"></i> Home Loan</h3>
+        <p>Affordable housing loans starting at 8.9% interest with flexible tenures up to 30 years.</p>
+        <button onclick="alert('Home Loan Enquiry Submitted!')">Apply Now</button>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa fa-credit-card"></i> Premium Credit Card</h3>
+        <p>Enjoy up to ₹10 Cr credit limit, zero annual fee for the first year, and airport lounge access.</p>
+        <button onclick="alert('Credit Card Request Submitted!')">Request Card</button>
+      </div>
+
     </div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
 
 
