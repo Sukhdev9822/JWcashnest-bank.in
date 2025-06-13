@@ -1,59 +1,17 @@
+<!-- Step 10: support.html - Help Center Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JWcashnest BANK - Support</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    body {
-      background: url("assets/bank-bg.jpg") no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-    }
-
-    .faq {
-      margin-bottom: 20px;
-    }
-
-    .faq h4 {
-      margin: 10px 0 5px;
-      color: #004080;
-    }
-
-    .faq p {
-      margin: 0;
-      color: #444;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      margin: 8px 0;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    form button {
-      padding: 10px 18px;
-      border: none;
-      background: #0071ce;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    form button:hover {
-      background: #004080;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body onload="enforceLogin();">
   <div class="dashboard-container">
-    <!-- Sidebar -->
     <div class="sidebar">
-      <img src="assets/logo.png" alt="JWcashnest Logo" style="width: 140px; margin-bottom: 20px;" />
+      <h2 style="text-align:center; color:white;">JWcashnest BANK</h2>
       <ul>
         <li><a href="home.html"><i class="fa fa-home"></i> Dashboard</a></li>
         <li><a href="account.html"><i class="fa fa-university"></i> Account</a></li>
@@ -62,55 +20,38 @@
         <li><a href="beneficiaries.html"><i class="fa fa-users"></i> Beneficiaries</a></li>
         <li><a href="bills.html"><i class="fa fa-receipt"></i> Bills</a></li>
         <li><a href="loans.html"><i class="fa fa-credit-card"></i> Loans</a></li>
-        <li><a href="support.html"><i class="fa fa-headset"></i> Support</a></li>
+        <li><a class="active" href="support.html"><i class="fa fa-headset"></i> Support</a></li>
         <li><a href="profile.html"><i class="fa fa-user-circle"></i> Profile</a></li>
-        <li><a href="logout.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+        <li><a href="#" onclick="logout()"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
       </ul>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
-      <h2>Help & Support</h2>
+      <h2>Help & Support Center</h2>
+
+      <div class="card">
+        <h3><i class="fa fa-info-circle"></i> Contact Support</h3>
+        <p>Need help with your account or services? Reach out below:</p>
+        <ul>
+          <li>Email: support@jwcashnest.com</li>
+          <li>Phone: 1800-123-4567 (Toll-Free)</li>
+          <li>Chatbot: <em>Coming Soon</em></li>
+        </ul>
+      </div>
 
       <div class="card">
         <h3><i class="fa fa-question-circle"></i> Frequently Asked Questions</h3>
-
-        <div class="faq">
-          <h4>💳 How do I apply for a new credit card?</h4>
-          <p>You can go to the "Loans" page and click on “Apply Now” under the credit card section.</p>
-        </div>
-
-        <div class="faq">
-          <h4>🔐 How can I reset my password?</h4>
-          <p>Password reset is not live in demo. In real banking, it would be via email/OTP.</p>
-        </div>
-
-        <div class="faq">
-          <h4>💸 How to check transaction history?</h4>
-          <p>Visit the "Statements" page for detailed daily, monthly transactions.</p>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top: 25px;">
-        <h3><i class="fa fa-envelope"></i> Contact Support</h3>
-        <form onsubmit="sendMessage(event)">
-          <input type="text" id="name" placeholder="Your Name" required />
-          <input type="email" id="email" placeholder="Your Email" required />
-          <textarea rows="4" id="message" placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
+        <ul>
+          <li><strong>How can I reset my password?</strong> Go to login page > Forgot Password.</li>
+          <li><strong>How to update personal info?</strong> Visit your profile page and edit details.</li>
+          <li><strong>Where can I view my transaction history?</strong> Go to Statements page.</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <script>
-    function sendMessage(e) {
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-      alert("Thanks, " + name + ". Your message has been sent!");
-      e.target.reset();
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
+
 
