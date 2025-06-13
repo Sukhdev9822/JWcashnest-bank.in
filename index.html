@@ -4,18 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JWcashnest BANK - Login</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
   <div class="dashboard-container" style="justify-content: center; align-items: center; height: 100vh;">
     <div class="card" style="max-width: 400px; width: 100%; text-align: center; background-color: white;">
-      <h2 style="margin-bottom: 10px;"><span style="color:#003366">JW</span><strong>cashnest</strong> <span style="color:#003366">BANK</span></h2>
+      <h2 style="margin-bottom: 10px;">
+        <span style="color:#003366">JW</span><strong>cashnest</strong> <span style="color:#003366">BANK</span>
+      </h2>
       <form id="loginForm">
-        <input type="text" id="userid" placeholder="User ID" required/>
+        <input type="text" id="userid" placeholder="User ID" required />
         <div style="position: relative;">
           <input type="password" id="password" placeholder="Password" required />
-          <i class="fa fa-eye" id="toggleEye" style="position: absolute; right: 10px; top: 10px;" onclick="togglePassword()"></i>
+          <i class="fa fa-eye" id="toggleEye" onclick="togglePassword()" style="position: absolute; right: 10px; top: 10px; cursor: pointer;"></i>
         </div>
         <button type="submit">Login</button>
       </form>
@@ -28,8 +30,17 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginForm = document.getElementById("loginForm");
+      if (loginForm) {
+        loginForm.addEventListener("submit", login);
+      }
+    });
+  </script>
 </body>
 </html>
+
 
 
 
