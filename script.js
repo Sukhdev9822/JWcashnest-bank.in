@@ -1,78 +1,286 @@
-// ===== LOGIN VALIDATION =====
-function validateLogin(event) {
-  event.preventDefault();
-  const userId = document.getElementById("user-id").value.trim();
-  const password = document.getElementById("password").value.trim();
+// Final script.js for JWcashnest BANK
 
-  if (userId === "Sukhdevmondal147258" && password === "JW-5858") {
-    localStorage.setItem("loginTime", new Date().toLocaleString());
+// Dummy credentials
+const validUser = "Sukhdevmondal147258";
+const validPass = "JW-5858";
+
+function login(event) {
+  event.preventDefault();
+  const user = document.getElementById("userid").value;
+  const pass = document.getElementById("password").value;
+
+  if (!user || !pass) {
+    alert("Please enter both User ID and Password.");
+    return;
+  }
+
+  if (user === validUser && pass === validPass) {
+    sessionStorage.setItem("loggedIn", "true");
+    sessionStorage.setItem("loginTime", new Date().toLocaleString());
     window.location.href = "home.html";
   } else {
-    alert("Invalid credentials. Please try again.");
+    alert("Invalid credentials.");
   }
 }
 
+function enforceLogin() {
+  if (sessionStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "index.html";
+  }
+}
 
-// ===== PASSWORD TOGGLE =====
-function togglePasswordVisibility(inputId, iconId) {
-  const input = document.getElementById(inputId);
-  const icon = document.getElementById(iconId);
+function logout() {
+  sessionStorage.clear();
+  window.location.href = "logout.html";
+}
 
-  if (input.type === "password") {
-    input.type = "text";
+function togglePassword() {
+  const pwd = document.getElementById("password");
+  const icon = document.getElementById("toggleEye");
+  if (pwd.type === "password") {
+    pwd.type = "text";
     icon.classList.remove("fa-eye");
     icon.classList.add("fa-eye-slash");
   } else {
-    input.type = "password";
+    pwd.type = "password";
     icon.classList.remove("fa-eye-slash");
     icon.classList.add("fa-eye");
   }
 }
 
-// Toggle any text (account/balance) by ID
-function toggleMaskedText(id, iconId, realValue) {
-  const element = document.getElementById(id);
-  const icon = document.getElementById(iconId);
-
-  if (element && icon) {
-    if (element.textContent.includes("•")) {
-      element.textContent = realValue;
-      icon.classList.remove("fa-eye");
-      icon.classList.add("fa-eye-slash");
-    } else {
-      element.textContent = "•".repeat(realValue.length);
-      icon.classList.remove("fa-eye-slash");
-      icon.classList.add("fa-eye");
-    }
+function toggleBalance() {
+  const bal = document.getElementById("balanceAmount");
+  const icon = document.getElementById("balanceEye");
+  if (bal.classList.contains("secure-data")) {
+    bal.classList.remove("secure-data");
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  } else {
+    bal.classList.add("secure-data");
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
   }
 }
 
-// Show last login time
-function showLoginTime() {
-  const time = localStorage.getItem("loginTime");
-  if (time && document.getElementById("login-time")) {
-    document.getElementById("login-time").textContent = time;
+function toggleSecureInfo(btn) {
+  const spans = document.querySelectorAll(".secure-data");
+  spans.forEach(span => span.classList.toggle("show"));
+  const icon = btn.querySelector("i");
+  if (icon.classList.contains("fa-eye-slash")) {
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+    btn.innerHTML = '<i class="fa fa-eye"></i> Hide';
+  } else {
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+    btn.innerHTML = '<i class="fa fa-eye-slash"></i> Show';
   }
 }
 
-// Enforce login session on protected pages
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) {
+    loginForm.addEventListener("submit", login);
+  }
+
+  const timeSpan = document.getElementById("recentLoginTime");
+  if (timeSpan && sessionStorage.getItem("loginTime")) {
+    timeSpan.textContent = sessionStorage.getItem("loginTime");
+  }
+
+  const bal = document.getElementById("balanceAmount");
+  if (bal && !bal.classList.contains("secure-data")) {
+    bal.classList.add("secure-data");
+  }
+});
+// Final script.js for JWcashnest BANK
+
+// Dummy credentials
+const validUser = "Sukhdevmondal147258";
+const validPass = "JW-5858";
+
+function login(event) {
+  event.preventDefault();
+  const user = document.getElementById("userid").value;
+  const pass = document.getElementById("password").value;
+
+  if (!user || !pass) {
+    alert("Please enter both User ID and Password.");
+    return;
+  }
+
+  if (user === validUser && pass === validPass) {
+    sessionStorage.setItem("loggedIn", "true");
+    sessionStorage.setItem("loginTime", new Date().toLocaleString());
+    window.location.href = "home.html";
+  } else {
+    alert("Invalid credentials.");
+  }
+}
+
 function enforceLogin() {
-  if (localStorage.getItem("isLoggedIn") !== "true") {
+  if (sessionStorage.getItem("loggedIn") !== "true") {
     window.location.href = "index.html";
   }
 }
 
-// Login success: set session
-function validateLogin(event) {
-  event.preventDefault();
-  const userId = document.getElementById("user-id").value.trim();
-  const password = document.getElementById("password-input").value.trim();
+function logout() {
+  sessionStorage.clear();
+  window.location.href = "logout.html";
+}
 
-  if (userId === "Sukhdevmondal147258" && password === "JW-5858") {
-    localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("loginTime", new Date().toLocaleString());
-    window.location.href = "home.html";
+function togglePassword() {
+  const pwd = document.getElementById("password");
+  const icon = document.getElementById("toggleEye");
+  if (pwd.type === "password") {
+    pwd.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
   } else {
-    alert("Invalid credentials. Please try again.");
+    pwd.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
   }
 }
+
+function toggleBalance() {
+  const bal = document.getElementById("balanceAmount");
+  const icon = document.getElementById("balanceEye");
+  if (bal.classList.contains("secure-data")) {
+    bal.classList.remove("secure-data");
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  } else {
+    bal.classList.add("secure-data");
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  }
+}
+
+function toggleSecureInfo(btn) {
+  const spans = document.querySelectorAll(".secure-data");
+  spans.forEach(span => span.classList.toggle("show"));
+  const icon = btn.querySelector("i");
+  if (icon.classList.contains("fa-eye-slash")) {
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+    btn.innerHTML = '<i class="fa fa-eye"></i> Hide';
+  } else {
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+    btn.innerHTML = '<i class="fa fa-eye-slash"></i> Show';
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) {
+    loginForm.addEventListener("submit", login);
+  }
+
+  const timeSpan = document.getElementById("recentLoginTime");
+  if (timeSpan && sessionStorage.getItem("loginTime")) {
+    timeSpan.textContent = sessionStorage.getItem("loginTime");
+  }
+
+  const bal = document.getElementById("balanceAmount");
+  if (bal && !bal.classList.contains("secure-data")) {
+    bal.classList.add("secure-data");
+  }
+});
+// Final script.js for JWcashnest BANK
+
+// Dummy credentials
+const validUser = "Sukhdevmondal147258";
+const validPass = "JW-5858";
+
+function login(event) {
+  event.preventDefault();
+  const user = document.getElementById("userid").value;
+  const pass = document.getElementById("password").value;
+
+  if (!user || !pass) {
+    alert("Please enter both User ID and Password.");
+    return;
+  }
+
+  if (user === validUser && pass === validPass) {
+    sessionStorage.setItem("loggedIn", "true");
+    sessionStorage.setItem("loginTime", new Date().toLocaleString());
+    window.location.href = "home.html";
+  } else {
+    alert("Invalid credentials.");
+  }
+}
+
+function enforceLogin() {
+  if (sessionStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "index.html";
+  }
+}
+
+function logout() {
+  sessionStorage.clear();
+  window.location.href = "logout.html";
+}
+
+function togglePassword() {
+  const pwd = document.getElementById("password");
+  const icon = document.getElementById("toggleEye");
+  if (pwd.type === "password") {
+    pwd.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    pwd.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
+
+function toggleBalance() {
+  const bal = document.getElementById("balanceAmount");
+  const icon = document.getElementById("balanceEye");
+  if (bal.classList.contains("secure-data")) {
+    bal.classList.remove("secure-data");
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  } else {
+    bal.classList.add("secure-data");
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  }
+}
+
+function toggleSecureInfo(btn) {
+  const spans = document.querySelectorAll(".secure-data");
+  spans.forEach(span => span.classList.toggle("show"));
+  const icon = btn.querySelector("i");
+  if (icon.classList.contains("fa-eye-slash")) {
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+    btn.innerHTML = '<i class="fa fa-eye"></i> Hide';
+  } else {
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+    btn.innerHTML = '<i class="fa fa-eye-slash"></i> Show';
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) {
+    loginForm.addEventListener("submit", login);
+  }
+
+  const timeSpan = document.getElementById("recentLoginTime");
+  if (timeSpan && sessionStorage.getItem("loginTime")) {
+    timeSpan.textContent = sessionStorage.getItem("loginTime");
+  }
+
+  const bal = document.getElementById("balanceAmount");
+  if (bal && !bal.classList.contains("secure-data")) {
+    bal.classList.add("secure-data");
+  }
+});
+
