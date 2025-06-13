@@ -1,14 +1,21 @@
+<!-- Step 4: account.html with secure session, eye toggles, and profile details -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JWcashnest BANK - Account Summary</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .card i.fa-eye, .card i.fa-eye-slash {
+      margin-left: 10px;
+      cursor: pointer;
+      color: #0071ce;
+    }
+  </style>
 </head>
-<body onload="enforceLogin();">
-
+<body onload="enforceLogin(); showLoginTime();">
   <div class="dashboard-container">
     <!-- Sidebar -->
     <div class="sidebar">
@@ -23,7 +30,7 @@
         <li><a href="loans.html"><i class="fa fa-credit-card"></i> Loans</a></li>
         <li><a href="support.html"><i class="fa fa-headset"></i> Support</a></li>
         <li><a href="profile.html"><i class="fa fa-user-circle"></i> Profile</a></li>
-        <li><a href="logout.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+        <li><a href="#" onclick="logout()"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
       </ul>
     </div>
 
@@ -34,11 +41,11 @@
       <div class="card">
         <h3>Account Information</h3>
         <p><strong>Account No:</strong>
-          <span id="account-number">••••••••••</span>
+          <span id="account-number">••••••••</span>
           <i class="fa fa-eye" id="account-icon" onclick="toggleMaskedText('account-number', 'account-icon', '1000054871245007')"></i>
         </p>
         <p><strong>Balance:</strong> ₹
-          <span id="balance">••••••••••</span>
+          <span id="balance">••••••••</span>
           <i class="fa fa-eye" id="balance-icon" onclick="toggleMaskedText('balance', 'balance-icon', '8,95,74,000.52')"></i>
         </p>
         <p><strong>IFSC Code:</strong> JWCASHNEST001</p>
@@ -48,7 +55,7 @@
       <div class="card">
         <h3>Profile Details</h3>
         <p><strong>Name:</strong> Sukhdev Mondal</p>
-        <p><strong>Aadhaar No:</strong> 6716 2235 3722</p>
+        <p><strong>Aadhaar:</strong> 6716 2235 3722</p>
         <p><strong>PAN:</strong> EUKPM1620L</p>
         <p><strong>Phone:</strong> +91 8420149381</p>
         <p><strong>Email:</strong> sukhdevmondal@example.com</p>
@@ -59,5 +66,6 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
