@@ -1,8 +1,8 @@
-// ✅ Dummy credentials
+// Dummy credentials
 const validUser = "Sukhdevmondal147258";
 const validPass = "JW-5858";
 
-// ✅ Login handler
+// Login Handler
 function login(event) {
   event.preventDefault();
   const user = document.getElementById("userid").value.trim();
@@ -22,20 +22,20 @@ function login(event) {
   }
 }
 
-// ✅ Protect pages from unauthorized access
+// Enforce login for protected pages
 function enforceLogin() {
   if (sessionStorage.getItem("loggedIn") !== "true") {
     window.location.href = "index.html";
   }
 }
 
-// ✅ Logout user
+// Logout handler
 function logout() {
   sessionStorage.clear();
   window.location.href = "logout.html";
 }
 
-// ✅ Password eye toggle
+// Toggle password visibility
 function togglePassword() {
   const pwd = document.getElementById("password");
   const icon = document.getElementById("toggleEye");
@@ -50,93 +50,45 @@ function togglePassword() {
   }
 }
 
-// ✅ Toggle account number visibility
+// Toggle account number
 function toggleAccount() {
   const acc = document.getElementById("accountNo");
   const icon = document.getElementById("accountEye");
-  if (acc.classList.contains("secure-data")) {
-    acc.classList.remove("secure-data");
-    icon.classList.remove("fa-eye-slash");
-    icon.classList.add("fa-eye");
-  } else {
-    acc.classList.add("secure-data");
-    icon.classList.remove("fa-eye");
-    icon.classList.add("fa-eye-slash");
-  }
+  acc.classList.toggle("secure-data");
+  icon.classList.toggle("fa-eye");
+  icon.classList.toggle("fa-eye-slash");
 }
 
-// ✅ Toggle balance visibility
+// Toggle balance
 function toggleBalance() {
   const bal = document.getElementById("balanceAmount");
   const icon = document.getElementById("balanceEye");
-
-  if (bal.classList.contains("secure-data")) {
-    bal.classList.remove("secure-data");
-    icon.classList.remove("fa-eye");
-    icon.classList.add("fa-eye-slash");
-  } else {
-    bal.classList.add("secure-data");
-    icon.classList.remove("fa-eye-slash");
-    icon.classList.add("fa-eye");
-  }
+  bal.classList.toggle("secure-data");
+  icon.classList.toggle("fa-eye");
+  icon.classList.toggle("fa-eye-slash");
 }
 
-function toggleAccount() {
-  const acc = document.getElementById("accountNo");
-  const icon = document.getElementById("accountEye");
-
-  if (acc.classList.contains("secure-data")) {
-    acc.classList.remove("secure-data");
-    icon.classList.remove("fa-eye");
-    icon.classList.add("fa-eye-slash");
-  } else {
-    acc.classList.add("secure-data");
-    icon.classList.remove("fa-eye-slash");
-    icon.classList.add("fa-eye");
-  }
-}
-
-
-// ✅ Toggle profile info (Aadhaar/PAN/etc.)
-function toggleSecureInfo(btn) {
-  const spans = document.querySelectorAll(".secure-data");
-  spans.forEach(span => span.classList.toggle("show"));
-
-  const icon = btn.querySelector("i");
-  if (icon.classList.contains("fa-eye-slash")) {
-    icon.classList.remove("fa-eye-slash");
-    icon.classList.add("fa-eye");
-    btn.innerHTML = '<i class="fa fa-eye"></i> Hide';
-  } else {
-    icon.classList.remove("fa-eye");
-    icon.classList.add("fa-eye-slash");
-    btn.innerHTML = '<i class="fa fa-eye-slash"></i> Show';
-  }
-}
-
-// ✅ DOM ready handler
+// Auto-set recent login time
 document.addEventListener("DOMContentLoaded", function () {
+  // Setup login form
   const loginForm = document.getElementById("loginForm");
   if (loginForm) {
     loginForm.addEventListener("submit", login);
   }
 
-  // Display recent login time if available
-  const timeSpan = document.getElementById("recentLoginTime");
-  if (timeSpan && sessionStorage.getItem("loginTime")) {
-    timeSpan.textContent = sessionStorage.getItem("loginTime");
+  // Set recent login
+  const span = document.getElementById("recentLoginTime");
+  const loginTime = sessionStorage.getItem("loginTime");
+  if (span && loginTime) {
+    span.textContent = loginTime;
   }
 
-  // Hide balance by default
+  // Default: hide balance & account
   const bal = document.getElementById("balanceAmount");
-  if (bal && !bal.classList.contains("secure-data")) {
-    bal.classList.add("secure-data");
-  }
-
   const acc = document.getElementById("accountNo");
-  if (acc && !acc.classList.contains("secure-data")) {
-    acc.classList.add("secure-data");
-  }
+  if (bal && !bal.classList.contains("secure-data")) bal.classList.add("secure-data");
+  if (acc && !acc.classList.contains("secure-data")) acc.classList.add("secure-data");
 });
+
 
 
