@@ -1,24 +1,14 @@
-<!-- Step 3: home.html with secure session, welcome message, balance toggle, and dashboard layout -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JWcashnest BANK - Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    .card i.fa-eye, .card i.fa-eye-slash {
-      margin-left: 10px;
-      cursor: pointer;
-      color: #0071ce;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
-<body onload="enforceLogin(); showLoginTime();">
-
+<body onload="enforceLogin();">
   <div class="dashboard-container">
-    <!-- Sidebar -->
     <div class="sidebar">
       <h2 style="text-align:center; color:white;">JWcashnest BANK</h2>
       <ul>
@@ -35,26 +25,52 @@
       </ul>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
-      <h2>Welcome, Sukhdev Mondal</h2>
+      <h2>Welcome, Sukhdev Mondal 👋</h2>
 
       <div class="card">
         <h3>Account Overview</h3>
-        <p><strong>Account No:</strong>
-          <span id="account-number">••••••••</span>
-          <i class="fa fa-eye" id="account-icon" onclick="toggleMaskedText('account-number', 'account-icon', '1000054871245007')"></i>
+        <p><strong>Account No:</strong> 
+          <span id="accountNo" class="secure-data">1000054871245007</span>
+          <i id="accountEye" class="fa fa-eye" onclick="toggleAccount()" style="cursor:pointer;"></i>
         </p>
-        <p><strong>Balance:</strong> ₹
-          <span id="balance">••••••••</span>
-          <i class="fa fa-eye" id="balance-icon" onclick="toggleMaskedText('balance', 'balance-icon', '8,95,74,000.52')"></i>
+        <p><strong>Balance:</strong> ₹ 
+          <span id="balanceAmount" class="secure-data">8,95,74,000.52</span>
+          <i id="balanceEye" class="fa fa-eye" onclick="toggleBalance()" style="cursor:pointer;"></i>
         </p>
-        <p><strong>Recent Login:</strong> <span id="login-time">Loading...</span></p>
+        <p><strong>Recent Login:</strong> <span id="recentLoginTime">Loading...</span></p>
       </div>
 
       <div class="card">
-        <h3>Quick Actions</h3>
-        <p>Access recent transactions, make transfers, or manage your cards using the left menu.</p>
+        <h3>Credit Card Limit</h3>
+        <p>₹10 Cr Platinum Limit Activated ✅</p>
+      </div>
+
+      <div class="card">
+        <h3>Recent Transactions</h3>
+        <ul>
+          <li>Zomato Order – ₹2,450</li>
+          <li>Salary Credited – ₹50,000</li>
+          <li>IRCTC Ticket – ₹1,200</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Active Loans</h3>
+        <p>Home Loan – ₹22,00,000<br/>Personal Loan – ₹2,50,000</p>
+      </div>
+
+      <div class="card">
+        <h3>Upcoming Bills</h3>
+        <ul>
+          <li>Electricity: ₹2,400 (Due: 15 Jun)</li>
+          <li>Internet: ₹999 (Due: 17 Jun)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>KYC Status</h3>
+        <p><strong>Status:</strong> Verified ✅<br/>Last Updated: Mar 2025</p>
       </div>
     </div>
   </div>
@@ -62,6 +78,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
